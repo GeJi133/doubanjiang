@@ -605,7 +605,9 @@ html[data-android] .ColumnPageHeader-TitleColumn {
     -ms-flex-align: center;
     align-items: center
 }
+.ColumnPageHeader-Button button{
 
+}
 .ColumnPageHeader-FollowButton {
     margin-right: 18px
 }
@@ -2730,7 +2732,7 @@ html[data-theme=dark] .ContentItem-time {
     flex-direction: column;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    background-image: url(../images/column-login-bg.png);
+    /*background-image: url(../images/column-login-bg.png);*/
     background-repeat: no-repeat;
     background-color: #eeedee;
     background-size: cover;

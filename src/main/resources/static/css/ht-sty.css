@@ -10,7 +10,10 @@ a{text-decoration: none;}
 .wallbox{ width: 100%;}
 
 .hearer{ height: 80px; background: #fff;}
-.hearer .nbox{ max-width: 1240px; margin: auto; clear:both;}
+.hearer .nbox{
+   max-width: 1240px; margin: auto; clear:both;
+}
+.hearer .nbox .head-text{ line-height: 80px; font-size: 24px; color: #555555; float: right; margin-right: 20px}
 .hearer .nbox .logo{ line-height: 80px; font-size: 24px; color: #555555; float: left;}
 .hearer .nbox .logo img{ position: relative; top: 10px; width: 60px; margin-right: 20px; float: left;}
 .hearer .nbox .right-con{ float: right; height: 80px;}
