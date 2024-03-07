@@ -27,15 +27,19 @@ public class FilmController {
 	 *                                    model.addAttribute("films",fs); return
 	 *                                    "index"; }
 	 **/
-
-	@RequestMapping(value = "/searchFilm", produces = "text/html;charset=UTF-8")
+	@GetMapping({"/search", "/search.html"})
+	public String loginPage() {
+		return "search";
+	}
+//	@RequestMapping(value = "/searchFilm", produces = "text/html;charset=UTF-8")
+	@RequestMapping(value = "/searchFilm")
 	@ResponseBody
 	public SearchResult<Film> searchFilm(Model model, String search_str, int start, int limits) {
 		SearchResult<Film> fs = SearchService.searchFilm(search_str, start, limits);
 		return fs;
 	}
 
-	@RequestMapping(value = "/searchActor", produces = "text/html;charset=UTF-8")
+	@RequestMapping(value = "/searchActor")
 	public @ResponseBody SearchResult<Actor> searchActor(Model model, String search_str, int start, int limits) {
 		SearchResult<Actor> as = SearchService.searchActor(search_str, start, limits);
 		return as;
@@ -46,5 +50,4 @@ public class FilmController {
 		filmService.getFilmLucene();
 		return "success";
 	}
-
 }
