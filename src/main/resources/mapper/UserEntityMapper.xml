@@ -10,10 +10,13 @@
     <result column="profession" jdbcType="VARCHAR" property="profession" />
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <collection property="auths" ofType="java.lang.String" javaType="list">
+      <result column="auth_code"></result>
+    </collection>
   </resultMap>
   <sql id="Base_Column_List">
-    user_id, login_name, password_md5, head_img_url, introduce, profession, address, 
-    create_time
+    tb_user.user_id, login_name, password_md5, head_img_url, introduce, profession, address,
+    create_time,auth_code
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -22,17 +25,21 @@
     where user_id = #{userId,jdbcType=BIGINT}
   </select>
 
-  <select id="selectByLoginName" resultType="com.my.column.entity.UserEntity">
+  <select id="selectByLoginName" resultMap="BaseResultMap">
     select
-    <include refid="Base_Column_List" />
+      tb_user.user_id, login_name, password_md5, head_img_url, introduce, profession, address,
+      create_time,auth_code
     from tb_user
+        left join user_auth on tb_user.user_id = user_auth.user_id
     where login_name = #{loginName} limit 1
   </select>
 
   <select id="selectByLoginNameAndPasswd" resultMap="BaseResultMap">
     select
-    <include refid="Base_Column_List"/>
+      tb_user.user_id, login_name, password_md5, head_img_url, introduce, profession, address,
+      create_time,auth_code
     from tb_user
+        left join user_auth on tb_user.user_id = user_auth.user_id
     where login_name = #{loginName} and password_md5 = #{password}
   </select>
 

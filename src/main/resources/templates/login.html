@@ -116,6 +116,7 @@
     }
 
     function login() {
+        console.log("login()")
         var loginName = $("#loginName").val();
         if (!validPhoneNumber(loginName)) {
             swal('请输入正确的登录名(即手机号)', {
@@ -139,14 +140,17 @@
         }
         //验证
         var params = $("#loginForm").serialize();
-        var url = '/login';
+        var url = '/tologin';
         $.ajax({
             type: 'POST',//方法类型
             url: url,
             data: params,
             success: function (result) {
-                if (result.resultCode == 200) {
-                    window.location.href = '/index';
+                if (result.code == 200) {
+                    console.log("登录成功")
+                    console.log(result)
+                    localStorage.setItem("token",result.data)
+                    // window.location.href = '/index';
                 } else {
                     swal(result.message, {
                         icon: "error",

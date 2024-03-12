@@ -23,6 +23,7 @@ public class MyColumnWebMvcConfigurer implements WebMvcConfigurer {
 
     public void addInterceptors(InterceptorRegistry registry) {
         // 登陆拦截
+        System.out.println("登录拦截");
         registry.addInterceptor(myColumnLoginInterceptor)
                 .excludePathPatterns("/register")
                 .excludePathPatterns("/login")

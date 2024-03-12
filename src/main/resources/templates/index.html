@@ -68,7 +68,9 @@
     $(function () {
         renderColumns();
     })
-
+    $(document).ready(function(){
+        console.log("index")
+    })
     function renderColumns() {
         // 1. 向后端发送请求获取随机的专栏列表
         $.ajax({

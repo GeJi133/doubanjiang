@@ -1,10 +1,11 @@
 package com.my.column.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class UserEntity {
     private Long userId;
-
+    private List<String> auths;//用户权限
     private String loginName;
 
     private String passwordMd5;
@@ -83,6 +84,14 @@ public class UserEntity {
         this.createTime = createTime;
     }
 
+    public List<String> getAuths(){
+        return auths;
+    }
+
+    public void setAuths(List<String> anths) {
+        this.auths = anths;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -97,6 +106,10 @@ public class UserEntity {
         sb.append(", profession=").append(profession);
         sb.append(", address=").append(address);
         sb.append(", createTime=").append(createTime);
+        if (auths  !=null){
+            sb.append("auther").append(auths.size());
+        }
+
         sb.append("]");
         return sb.toString();
     }

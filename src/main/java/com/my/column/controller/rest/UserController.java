@@ -23,6 +23,7 @@ public class UserController {
 
     @GetMapping({"/login", "/login.html"})
     public String loginPage() {
+        System.out.println("login page");
         return "login";
     }
 
@@ -85,12 +86,13 @@ public class UserController {
     }
 
 
-    @PostMapping("/login")
+    @PostMapping("/tologin")
     @ResponseBody
     public Result login(@RequestParam("loginName") String loginName,
                         @RequestParam("verifyCode") String verifyCode,
                         @RequestParam("password") String password,
                         HttpSession httpSession) {
+        System.out.println("login controller");
         if (!StringUtils.hasLength(loginName)) {
             return ResultGenerator.genFailResult(ServiceResultEnum.LOGIN_NAME_NULL.getResult());
         }
@@ -106,6 +108,7 @@ public class UserController {
 //        }
         String loginResult = userService.login(loginName, MD5Util.MD5Encode(password, "UTF-8"), httpSession);
         //登录成功
+        System.out.println("loginResult"+loginResult);
         if (ServiceResultEnum.SUCCESS.getResult().equals(loginResult)) {
             return ResultGenerator.genSuccessResult();
         }
